@@ -137,7 +137,6 @@
     .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:700}
     .title{font-size:22px;line-height:1.02;font-weight:800;margin-top:6px}
     .brand-logo{width: 59px; max-width: 17%; height: auto; display: block; object-fit: contain; flex: 0 0 auto}
-
     .stage{padding:12px 12px 8px;display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;position:relative}
     .hero{
       flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1.25fr .75fr;gap:10px;
@@ -281,6 +280,24 @@
 
     @media (max-width:380px){
       .title{font-size:18px}.hero-copy h2{font-size:24px}.brand-logo{width:52px}.opt{font-size:10px}.hint-img{width:110px;height:110px;flex:0 0 110px}.hint-text{font-size:10px}
+    }
+
+    /* AJUSTE DE TELA CHEIA, MANTENDO PROPORÇÃO */
+    @media (max-width: 768px) {
+      .game {
+        width: 100vw;
+        max-width: 100vw;
+        height: auto;
+        max-height: 100dvh;
+      }
+    }
+    @media (min-width: 769px) {
+      .game {
+        height: 100dvh;
+        max-height: 100dvh;
+        width: auto;
+        max-width: min(420px, 100vw - 24px);
+      }
     }
   </style>
 </head>
@@ -803,8 +820,7 @@
       });
       restartBtn.addEventListener('click', () => { answers = []; currentQ = 0; showScreen(coverScreen); });
       exitBtn.addEventListener('click', () => {
-        if (window.parent !== window) window.parent.postMessage({ type:'close-quiz' }, '*');
-        else showScreen(coverScreen);
+        window.location.href = 'https://psiangelooliveira.com.br/modo-aviao/';
       });
       idealBtn.addEventListener('click', () => idealModal.classList.add('show'));
       closeModal.addEventListener('click', () => idealModal.classList.remove('show'));
